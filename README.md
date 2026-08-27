@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TV Series List
 
-## Available Scripts
+A React app for searching TV shows and viewing show details, built on the free [TVmaze API](https://www.tvmaze.com/api).
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Search-as-you-type for TV shows
+- Click a result to view a detail page with premiere date, rating, and poster image
+- Client-side routing via `react-router-dom`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- React 16.8.6 (Create React App / react-scripts 3.0.1)
+- react-router-dom for routing
+- TVmaze API (no API key required)
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project uses an older version of `react-scripts` that requires Node 16 (newer Node versions will throw an OpenSSL-related build error).
 
-### `npm run build`
+```bash
+git clone https://github.com/tnelson2016/tv-series-app.git
+cd tv-series-app
+nvm use 16          # or use NODE_OPTIONS=--openssl-legacy-provider on newer Node
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app will open at [http://localhost:3000](http://localhost:3000).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Known Issues
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- No loading/error states beyond a basic "Loading..." message
+- Styling is minimal/unstyled — functional but not polished
+- No test coverage beyond the default CRA smoke test
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+src/
+  components/
+    App/           # Root component
+    Main/           # Route switch (list view vs. detail view)
+    Intro/          # Simple message component
+    SeriesList/     # Renders search results as a list
+  containers/
+    Series/         # Search input + results (home page)
+    SingleSeries/    # Show detail page (fetched by id)
+```
